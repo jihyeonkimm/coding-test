@@ -17,3 +17,33 @@ function sumOfNumbers() {
 
 // 문자열 반복
 // https://www.acmicpc.net/problem/2675
+function repeatString() {
+  const fs = require('fs');
+  const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+  const T = Number(input[0]);
+  
+  for(let i = 1; i <= T; i++) {
+    let [r, s] = input[i].split(" ");
+    r = Number(r);
+    let result = "";
+    for(let j = 0; j < s.length; j++) {
+        result += s.charAt(j).repeat(r);
+    }
+    console.log(result);
+  }
+}
+
+// 상수
+// https://www.acmicpc.net/problem/2908
+function reverseString() {
+  const fs = require('fs');
+  const input = fs.readFileSync('/dev/stdin').toString().split(' ');
+
+  const a = input[0];
+  const b = input[1];
+
+  const newA = a[2] + a[1] + a[0];
+  const newB = b[2] + b[1] + b[0];
+
+  console.log(Math.max(Number(newA), Number(newB)))
+}
