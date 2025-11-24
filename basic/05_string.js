@@ -1,4 +1,7 @@
 // 숫자의 합
+
+const { count } = require('console');
+
 // https://www.acmicpc.net/problem/11720
 function sumOfNumbers() {
   const fs = require('fs');
@@ -47,3 +50,55 @@ function reverseString() {
 
   console.log(Math.max(Number(newA), Number(newB)))
 }
+
+// 그룹 단어 체커
+// https://www.acmicpc.net/problem/1316
+function groupWordChecker() {
+  const fs = require('fs');
+  const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
+
+  const n = Number(input[0]);
+  let groupWordCount = 0;
+
+  for(let i = 1; i <= n; i++) {
+    let data = input[i];
+    if(isGroupWord(data)) groupWordCount += 1;
+  }
+
+  function isGroupWord(data) {
+    let newData = new Set(data[0]); // 첫 글자 추가
+    for(let i = 0; i < data.length; i++) {
+      // 다음 글자가 다를 때
+      if(data[i] != data[i + 1]) {
+        // 다음 글자가 이미 Set에 있으면 그룹 단어 아님
+        if(newData.has(data[i + 1])) {
+          return false;
+        } else {
+          // 다음 글자 Set에 추가
+          newData.add(data[i + 1]);
+        }
+      }
+    }
+    return true;
+  }
+
+  console.log(groupWordCount)
+}
+
+// 단어의 개수
+// https://www.acmicpc.net/problem/1152
+
+function countWords() {
+  const fs = require('fs');
+  const input = fs.readFileSync(process.platform === 'linux' ? '/dev/stdin' : './input.txt')
+    .toString().trim();
+
+  const words = input.split(' ');
+  if(words == '') {
+    console.log(0)
+  } else {
+    console.log(words.length)
+  }
+}
+
+countWords();

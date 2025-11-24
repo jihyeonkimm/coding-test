@@ -1,0 +1,6 @@
+{
+  "code-runner.runOnSave": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.showExecutionMessage": true,
+  "code-runner.saveFileBeforeRun": true
+}
